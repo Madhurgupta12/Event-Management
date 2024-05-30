@@ -38,7 +38,7 @@ const KanbanBoard = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className=" bg-red-300  h-screen container mx-auto p-4">
       <header className="text-center mb-8">
         <h1 className="text-3xl font-bold">KT Kanban Board</h1>
       </header>
