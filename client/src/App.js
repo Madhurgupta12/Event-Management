@@ -4,6 +4,7 @@ import Home from "./Component/Home"
 import Login from "./Component/login"
 import Signup from "./Component/Signup"
 import TextEditor from './pages/TextEditor'
+import Kanban from "./Component/KanBan"
 const App = () => {
   
   return (
@@ -12,6 +13,9 @@ const App = () => {
   <Route path="/" element={<Home></Home>}></Route>
   <Route path="/login" element={<Login></Login>}></Route>
   <Route path="/signup" element={<Signup></Signup>}></Route>
+  <Route path="/kanban" element={<Kanban></Kanban>}></Route>
+  
+
  </Routes>
 
    
