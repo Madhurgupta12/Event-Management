@@ -2,6 +2,7 @@ const express=require('express')
 const router=express.Router();
 const middleware=require("../middleware/middleware");
 const Task=require("../model/task");
+const Calender=require("../model/Calender");
 router.post("/add",middleware,async(req,res)=>{
     const {title,status}=req.body;
     if(!title||!status)
@@ -49,6 +50,58 @@ router.post("/delete",middleware,async(req,res)=>{
         return res.status(404).json({success:false});
 
 
+
+
+})
+
+
+router.post("/addcal",middleware,async(req,res)=>{
+    const {name,deadline}=req.body;
+    if(!name||!deadline)
+        return res.status(404).json({success:false});
+    const tt=new Calender({name:name,deadline:deadline,user:req.user});
+    const aa=await tt.save();
+    if(aa)
+        {
+            const task=await Calender.find({user:req.user})
+            return res.status(200).json({success:true,task:task})
+
+        }
+        else
+        return res.status(404).json({success:false});
+
+})
+router.get("/showcal",middleware,async(req,res)=>{
+    const tt=await Calender.find({user:req.user})
+    if(tt)
+        {
+            return res.status(200).json({success:true,task:tt})
+        }
+        else
+        return res.status(404).json({success:false});
+})
+
+router.post("/deletecal",middleware,async(req,res)=>{
+    const {name}=req.body;
+    if(!name)
+        {
+            return res.status(404).json({message:"Please enter a title"});
+        }
+    const tt=await Calender.findOne({user:req.user,name:name});
+  
+    if(tt)
+        {
+    const deletedTask = await Calender.findByIdAndDelete(tt);
+    if(deletedTask)
+        {
+            return res.status(200).json({success:true});
+        }
+        else
+        return res.status(404).json({success:false});
+        }
+else
+return res.status(404).json({message:"error"});
+  
 
 
 })
