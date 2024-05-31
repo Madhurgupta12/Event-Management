@@ -80,4 +80,29 @@ router.get("/showcal",middleware,async(req,res)=>{
         else
         return res.status(404).json({success:false});
 })
+
+router.post("/deletecal",middleware,async(req,res)=>{
+    const {name}=req.body;
+    if(!name)
+        {
+            return res.status(404).json({message:"Please enter a title"});
+        }
+    const tt=await Calender.findOne({user:req.user,name:name});
+  
+    if(tt)
+        {
+    const deletedTask = await Calender.findByIdAndDelete(tt);
+    if(deletedTask)
+        {
+            return res.status(200).json({success:true});
+        }
+        else
+        return res.status(404).json({success:false});
+        }
+else
+return res.status(404).json({message:"error"});
+  
+
+
+})
 module.exports =router;
