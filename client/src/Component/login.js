@@ -44,12 +44,13 @@ const Login = () => {
             buttons: false,
             timer: 3000,
           });
-          //console.log(data);
+          console.log(data);
           // console.log(JSON.stringify(data.user));
           
           
           
-          localStorage.setItem("jwt",data.token);
+          localStorage.setItem("jwt", data.token);
+          localStorage.setItem("userId", data.user._id);
          navigate("/editor");
         }
         })
