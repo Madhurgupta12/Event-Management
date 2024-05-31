@@ -7,11 +7,6 @@ const Login = () => {
    const [password,setPassword]=useState("");
   const navigate=useNavigate();
    const submit=()=>{
-   
-       
-    
-    
-    
         fetch("http://localhost:4000/user/login",{
           method: "POST",
           headers:{
@@ -46,11 +41,9 @@ const Login = () => {
           });
           console.log(data);
           // console.log(JSON.stringify(data.user));
-          
-          
-          
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("userId", data.user._id);
+
          navigate("/editor");
         }
         })

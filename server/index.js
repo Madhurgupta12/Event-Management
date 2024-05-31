@@ -2,9 +2,53 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const dotenv=require('dotenv');
+const pdfDetails=require("./model/pdfDetails");
+app.use("/files", express.static("files"));
 dotenv.config();
 app.use(cors());
 app.use(express.json());
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./files");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+app.post("/upload-files", upload.single("file"), async (req, res) => {
+    console.log(req.file);
+    const { title, userId } = req.body; // Destructure title and userId from req.body
+    const fileName = req.file.filename;
+    console.log(userId);
+    try {
+      await pdfDetails.create({ title: title, pdf: fileName, userId: userId }); // Save userId along with title and fileName
+      res.send({ status: "ok" });
+    } catch (error) {
+      res.json({ status: error });
+    }
+  });
+  
+
+  
+    
+  
+  app.get("/get-files", async (req, res) => {
+    const { userId } = req.query; // Get userId from query parameters
+    
+    try {
+      pdfDetails.find({ userId: userId }).then((data) => { // Fetch files for the specific userId
+        res.send({ status: "ok", data: data });
+      });
+    } catch (error) {
+      res.json({ status: error });
+    }
+  });
+  
 const userRouter=require("./routes/user");
 const taskRouter=require("./routes/task");
 const {connectDB}=require("./db/db")
