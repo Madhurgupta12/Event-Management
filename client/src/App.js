@@ -7,6 +7,8 @@ import TextEditor from './pages/TextEditor'
 import Home1 from './RealTime/Home1'
 import EditorPage from './RealTime/EditorPage'
 import File from './pages/File'
+import Calender from "./Component/Calender"
+import Remainder from "./Component/Remainder"
 import './App.css';
 const App = () => {
   
@@ -19,6 +21,9 @@ const App = () => {
   <Route path="/login" element={<Login></Login>}></Route>
   <Route path="/editor" element={<TextEditor></TextEditor>}></Route>
   <Route path="/file" element={<File></File>}></Route>
+  <Route path="/task" element={<Calender></Calender>}></Route>
+  <Route path="/rem" element={<Remainder></Remainder>}></Route>
+  
  </Routes>
 
    

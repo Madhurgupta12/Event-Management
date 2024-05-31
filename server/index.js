@@ -9,6 +9,8 @@ app.use(cors());
 app.use(express.json());
 const multer = require("multer");
 
+
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./files");
@@ -51,9 +53,11 @@ app.post("/upload-files", upload.single("file"), async (req, res) => {
   
 const userRouter=require("./routes/user");
 const taskRouter=require("./routes/task");
+const remainder=require("./routes/remainder")
 const {connectDB}=require("./db/db")
 app.use("/user",userRouter);
 app.use("/api",taskRouter);
+app.use("/api",remainder);
 app.listen(process.env.PORT,(req,res)=>{
     console.log(`sever is running on port ${process.env.PORT}`);
 })
