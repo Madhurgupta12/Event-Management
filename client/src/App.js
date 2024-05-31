@@ -9,6 +9,7 @@ import EditorPage from './RealTime/EditorPage'
 import File from './pages/File'
 import Calender from "./Component/Calender"
 import Remainder from "./Component/Remainder"
+import Tree from "./Component/Tree"
 import './App.css';
 const App = () => {
   
@@ -23,6 +24,7 @@ const App = () => {
   <Route path="/file" element={<File></File>}></Route>
   <Route path="/task" element={<Calender></Calender>}></Route>
   <Route path="/rem" element={<Remainder></Remainder>}></Route>
+  <Route path="/tree" element={<Tree></Tree>}></Route>
   
  </Routes>
 
