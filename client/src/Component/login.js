@@ -1,17 +1,18 @@
 import React from 'react'
 import {useState} from "react"
+import { useNavigate } from 'react-router-dom'
 import swal from "sweetalert"
 const Login = () => {
    const [email,setEmail]=useState("");
    const [password,setPassword]=useState("");
-
+  const navigate=useNavigate();
    const submit=()=>{
    
        
     
     
     
-        fetch("http://localhost:4000/api/login",{
+        fetch("http://localhost:4000/user/login",{
           method: "POST",
           headers:{
           "Content-Type": "application/json"
@@ -49,7 +50,7 @@ const Login = () => {
           
           
           localStorage.setItem("jwt",data.token);
-         
+         navigate("/editor");
         }
         })
         .catch(err=>{

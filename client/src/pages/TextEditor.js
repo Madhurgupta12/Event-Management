@@ -1,9 +1,10 @@
 import {useEditor,EditorContent} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import BulletList from '@tiptap/extension-bullet-list'
 const extensions = [
-    StarterKit
+    StarterKit,BulletList
 ]
-const content=`<p>Start typing...</p>`
+const content=``
 const TextEditor = () => {
     const editor = useEditor({
         extensions,
@@ -12,9 +13,15 @@ const TextEditor = () => {
     if(!editor){
         return null
     }
+    const handleContent = () => {
+        const store=editor.getHTML();
+        console.log(store)
+    }
+    const temp=localStorage.getItem("jwt");
+    console.log(temp);
     return (
-        <div>
-            <div>
+        <div className='m-8'>
+            <div className='w-full flex flex-wrap bg-gray-600 p-3 gap-3 text-white'>
             <button
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={
@@ -119,7 +126,7 @@ const TextEditor = () => {
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={editor.isActive('bulletList') ? 'is-active' : ''}
       >
-        bullet list
+        toggleBulletList
       </button>
       <button
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
@@ -176,8 +183,12 @@ const TextEditor = () => {
         purple
       </button>
             </div>
-
-            <EditorContent editor={editor}/>
+            <div className='border border-gray-500 border-t-0'>
+            <EditorContent editor={editor} className="max-h-96 overflow-y-scroll"/>
+            </div>
+            <div>
+                <button onClick={handleContent}>Save</button>
+            </div>
         </div>
     )
 }
