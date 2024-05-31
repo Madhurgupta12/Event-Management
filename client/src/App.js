@@ -8,7 +8,7 @@ import TextEditor from './pages/TextEditor'
 import Kanban from "./Component/KanBan"
 import Home1 from './RealTime/Home1';
 import EditorPage from './RealTime/EditorPage';
-
+import Calender from "./Component/Calender"
 
 
 
@@ -27,6 +27,8 @@ const App = () => {
 
   <Route path="/signup" element={<Signup></Signup>}></Route>
   <Route path="/kanban" element={<Kanban></Kanban>}></Route>
+  <Route path="/calender" element={<Calender></Calender>}></Route>
+
   
 
 
