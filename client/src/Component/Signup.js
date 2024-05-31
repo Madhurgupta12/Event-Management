@@ -1,7 +1,10 @@
 import React from 'react'
 import {useState} from "react"
 import swal from "sweetalert"
+
+import { useNavigate } from 'react-router-dom'
 const Signup = () => {
+    const navigate=useNavigate();
 
     const[name,setName]=useState("");
     const[password,setPassword]=useState("");
@@ -10,7 +13,9 @@ const Signup = () => {
     const submit=()=>
     {
 
-        fetch("http://localhost:4000/api/signup",{
+
+        fetch("http://localhost:4000/user/signup",{
+
             method: "POST",
             headers:{
               "Content-type":"application/json"
@@ -33,6 +38,9 @@ const Signup = () => {
             });
             
             console.log(data);
+
+            navigate("/login");
+
           })
           .catch(err=>{
             console.log(err);
@@ -52,7 +60,9 @@ const Signup = () => {
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign up to your account
+
+            Sign in to your account
+
           </h2>
         </div>
 
@@ -121,7 +131,9 @@ const Signup = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign up
+
+                Sign in
+
               </button>
             </div>
           </div>

@@ -7,7 +7,6 @@ const registerController=async(req,res)=>{
         let user=await User.findOne({email:req.body.email});
         if(user){
             return res.status(200).send({message:"User already exist",error:"not found"});
-
         }
 
             const {name,email,password}=req.body;
