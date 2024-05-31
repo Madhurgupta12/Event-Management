@@ -2,6 +2,7 @@ const nodemailer = require('nodemailer');
 const router = require('express').Router();
 const middleware = require('../middleware/middleware'); // Import your middleware for authentication or other purposes
 const Calender=require('../model/Calender')
+const User=require('../model/user');
 // Define your route
 router.post("/rem", middleware, async(req, res) => {
     const { id, date } = req.body;
