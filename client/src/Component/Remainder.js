@@ -14,7 +14,7 @@ const TaskListWithReminder = () => {
 
     const fetchTasks = () => {
         fetch("http://localhost:4000/api/showcal", {
-            method: "POST",
+            method: "GET",
            
           headers: {
             "Content-Type": "application/json",
