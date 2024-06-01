@@ -2,8 +2,6 @@ import React from 'react'
 import {useState} from "react"
 import swal from "sweetalert"
 
-
-
 import { useNavigate } from 'react-router-dom'
 const Signup = () => {
     const navigate=useNavigate();
