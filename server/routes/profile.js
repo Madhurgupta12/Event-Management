@@ -11,6 +11,10 @@ router.get("/profile/show",middleware,async(req,res)=>{
         {
     return res.status(200).json({name:gg.name,email:gg.email,profile:pp.profile})
         }
+        else if(gg)
+            {
+                return res.status(200).json({name:gg.name,email:gg.email,profile:"fdnebjkte"})
+            }
 else
 return res.status(404).json({success:false})
 
@@ -28,9 +32,20 @@ router.post("/profile/add",middleware,async(req,res)=>{
         // Find the profile entry for the current user
         const existingProfile = await Profile.findOne({ user: req.user });
 
+
         // If the profile doesn't exist, return an error
         if (!existingProfile)
-            return res.status(404).json({ success: false, message: "Profile not found" });
+            {
+                const tt=await new Profile({profile:url,user:req.user})
+                const add=await tt.save();
+                if(add)
+                    {
+                        return res.status(200).json({success:true})
+                    }
+                    else
+                    return res.status(404).json({success:false})
+
+            }
 
         // Update the profile URL
         existingProfile.profile = url;
