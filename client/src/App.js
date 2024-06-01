@@ -10,6 +10,8 @@ import File from './pages/File'
 import Calender from "./Component/Calender"
 import Remainder from "./Component/Remainder"
 import Tree from "./Component/Tree"
+import KanBan from "./Component/KanBan"
+import Profile from "./Component/Profile"
 import './App.css';
 const App = () => {
   
@@ -25,7 +27,8 @@ const App = () => {
   <Route path="/task" element={<Calender></Calender>}></Route>
   <Route path="/rem" element={<Remainder></Remainder>}></Route>
   <Route path="/tree" element={<Tree></Tree>}></Route>
-  
+  <Route path="/kanban" element={<KanBan></KanBan>}></Route>
+  <Route path="/profile" element={<Profile></Profile>}></Route>
  </Routes>
 
    

@@ -54,10 +54,12 @@ app.post("/upload-files", upload.single("file"), async (req, res) => {
 const userRouter=require("./routes/user");
 const taskRouter=require("./routes/task");
 const remainder=require("./routes/remainder")
+const profileRouter =require("./routes/profile");
 const {connectDB}=require("./db/db")
 app.use("/user",userRouter);
 app.use("/api",taskRouter);
 app.use("/api",remainder);
+app.use("/api",profileRouter);
 app.listen(process.env.PORT,(req,res)=>{
     console.log(`sever is running on port ${process.env.PORT}`);
 })
