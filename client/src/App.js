@@ -13,7 +13,7 @@ import Remainder from "./Component/Remainder"
 import Tree from "./Component/Tree"
 import KanBan from "./Component/KanBan"
 import Profile from "./Component/Profile"
-
+import Group from './Component/Group'
 import './App.css';
 
 
@@ -34,7 +34,7 @@ const App = () => {
      <Route path='/editor/:roomId' element={ <EditorPage /> } />
   <Route path="/login" element={<Login></Login>}></Route>
   <Route path="/editor" element={<TextEditor></TextEditor>}></Route>
-
+<Route path="/group" element={<Group></Group>}></Route>
   <Route path="/file" element={<File></File>}></Route>
   <Route path="/task" element={<Calender></Calender>}></Route>
   <Route path="/rem" element={<Remainder></Remainder>}></Route>

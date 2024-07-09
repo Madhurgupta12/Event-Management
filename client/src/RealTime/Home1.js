@@ -39,7 +39,7 @@ function Home1() {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid bg-sky-200">
       <div className="row justify-content-center align-items-center min-vh-100">
         <div className="col-12 col-md-6">
           <div className="card shadow-sm p-2 mb-5 bg-secondary rounded">

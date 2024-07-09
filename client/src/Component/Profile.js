@@ -82,7 +82,7 @@ const Profile = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+        <div className="min-h-screen bg-sky-400 flex justify-center items-center">
             <div className="bg-white p-8 rounded-lg shadow-md w-full md:w-1/2 lg:w-1/3">
                 <h1 className="text-3xl font-bold text-center mb-6">Your Profile</h1>
                 {loading ? (
