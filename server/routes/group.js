@@ -10,6 +10,7 @@ router.post("/group/create",middleware,async(req,res)=>{
     try{
     const gg=await User.findById(id)
 
+    
     const array=[];
     array.push(id);
 const add=new Group({admin:gg.name,uid:groupid,members:array});
